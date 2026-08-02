@@ -12,25 +12,21 @@ from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_s
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-MODELING = PROJECT / "modeling"
-OUTPUT = MODELING / "v1.1_sodium_process_extended"
+MODELING = PROJECT / "outputs"
+OUTPUT = MODELING / "extended_comparison"
 BOOTSTRAP_RUNS = 1000
 RANDOM_SEED = 20260731
 
 COHORTS = {
     "primary": {
-        "core": MODELING / "v1.0_locked_primary",
-        "extended": OUTPUT / "primary",
-        "dataset": PROJECT / "data" / "primary_cohort_model_dataset_v1.0.csv",
+        "core": MODELING / "primary_model",
+        "extended": MODELING / "extended_primary",
+        "dataset": PROJECT / "data" / "primary_model_dataset.csv",
     },
     "high_certainty_sensitivity": {
-        "core": MODELING / "v1.0_high_certainty_sensitivity",
-        "extended": OUTPUT / "high_certainty_sensitivity",
-        "dataset": (
-            PROJECT
-            / "data"
-            / "high_certainty_sensitivity_model_dataset_v1.0.csv"
-        ),
+        "core": MODELING / "high_certainty_model",
+        "extended": MODELING / "extended_high_certainty",
+        "dataset": PROJECT / "data" / "high_certainty_model_dataset.csv",
     },
 }
 

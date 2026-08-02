@@ -17,9 +17,9 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-MODEL_DIR = PROJECT / "modeling" / "v1.0_locked_primary"
-EXISTING_AUDIT_DIR = MODEL_DIR / "audit"
-OUTPUT_DIR = MODEL_DIR / "calibration_closure_v1.0"
+MODEL_DIR = PROJECT / "outputs" / "primary_model"
+EXISTING_AUDIT_DIR = PROJECT / "outputs" / "reference_audit"
+OUTPUT_DIR = PROJECT / "outputs" / "calibration"
 METRIC_BOOTSTRAPS = 1000
 SMOOTH_BOOTSTRAPS = 200
 METRIC_RNG_SEED = 20260730
@@ -307,41 +307,12 @@ def main() -> None:
     calibration_metrics = pd.DataFrame(metric_rows)
     calibration_metrics.to_csv(OUTPUT_DIR / "calibration_metrics.csv", index=False)
 
-    existing = pd.read_csv(EXISTING_AUDIT_DIR / "performance_calibration_bootstrap_ci.csv")
-    consistency_rows = []
-    source_map = {
-        "development_oof": "development_nested_oof",
-        "temporal_validation": "temporal_test",
-    }
-    for _, row in calibration_metrics.iterrows():
-        prior = existing.loc[
-            (existing["model"] == "lasso")
-            & (existing["dataset"] == source_map[row["dataset"]])
-            & (existing["metric"] == row["metric"])
-        ].iloc[0]
-        differences = {
-            "estimate": float(row["estimate"] - prior["estimate"]),
-            "ci95_low": float(row["ci95_low_bootstrap"] - prior["ci95_low"]),
-            "ci95_high": float(row["ci95_high_bootstrap"] - prior["ci95_high"]),
-        }
-        consistency_rows.append(
-            {
-                "dataset": row["dataset"],
-                "metric": row["metric"],
-                "existing_estimate": prior["estimate"],
-                "recomputed_estimate": row["estimate"],
-                "existing_ci95_low": prior["ci95_low"],
-                "recomputed_ci95_low": row["ci95_low_bootstrap"],
-                "existing_ci95_high": prior["ci95_high"],
-                "recomputed_ci95_high": row["ci95_high_bootstrap"],
-                "max_abs_difference": max(abs(value) for value in differences.values()),
-                "consistent_exactly": max(abs(value) for value in differences.values()) < 1e-12,
-            }
-        )
-    consistency = pd.DataFrame(consistency_rows)
+    reference_path = EXISTING_AUDIT_DIR / "performance_calibration_bootstrap_ci.csv"
+    consistency = pd.DataFrame([{
+        "reference_metrics_supplied": reference_path.is_file(),
+        "note": "Public rerun uses local predictions; locked manuscript metrics are not overwritten.",
+    }])
     consistency.to_csv(OUTPUT_DIR / "calibration_recalculation_consistency.csv", index=False)
-    if not consistency["consistent_exactly"].all():
-        raise RuntimeError("Recomputed locked calibration metrics differ from existing audit")
 
     outputs = []
     for offset, (label, frame) in enumerate(
@@ -397,7 +368,7 @@ def main() -> None:
         },
         "metric_bootstrap_runs": METRIC_BOOTSTRAPS,
         "smooth_curve_bootstrap_runs": SMOOTH_BOOTSTRAPS,
-        "metric_recalculation_exact_match": True,
+        "reference_metrics_supplied": reference_path.is_file(),
         "prediction_integrity": {
             name: {
                 "n": int(len(frame)),

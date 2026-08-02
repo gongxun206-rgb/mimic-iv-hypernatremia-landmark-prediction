@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 from hashlib import sha256
 import json
+import shutil
 
 import joblib
 import numpy as np
@@ -18,8 +19,14 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-DEFAULT_INPUT_PATH = PROJECT / "data" / "strict_primary_model_dataset_v0.2.csv"
-DEFAULT_OUTPUT_DIR = PROJECT / "modeling" / "v0.1_exploratory"
+ROLE_INPUTS = {
+    "primary": PROJECT / "data" / "primary_model_dataset.csv",
+    "high_certainty": PROJECT / "data" / "high_certainty_model_dataset.csv",
+}
+ROLE_OUTPUTS = {
+    "primary": PROJECT / "outputs" / "primary_model",
+    "high_certainty": PROJECT / "outputs" / "high_certainty_model",
+}
 RANDOM_STATE = 20260729
 
 NUMERIC_FEATURES = [
@@ -133,17 +140,30 @@ def write_predictions(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT_PATH)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--analysis-role", required=True)
+    parser = argparse.ArgumentParser(
+        description="Develop the prespecified 27-variable models on an authorized local extract."
+    )
+    parser.add_argument("--analysis-role", choices=sorted(ROLE_INPUTS), default="primary")
+    parser.add_argument("--input", type=Path, help="Override the role-specific local input CSV")
+    parser.add_argument("--output", type=Path, help="Override outputs/<analysis-role>")
+    parser.add_argument(
+        "--overwrite", action="store_true",
+        help="Replace an existing output directory after path safety checks",
+    )
     args = parser.parse_args()
-    input_path = args.input.resolve()
-    output_dir = args.output.resolve()
+    input_path = (args.input or ROLE_INPUTS[args.analysis_role]).resolve()
+    output_dir = (args.output or ROLE_OUTPUTS[args.analysis_role]).resolve()
+    if not input_path.is_file():
+        raise FileNotFoundError(f"Model input does not exist: {input_path}")
     if output_dir.exists():
-        raise FileExistsError(
-            f"Output directory already exists and will not be overwritten: {output_dir}"
-        )
+        if not args.overwrite:
+            raise FileExistsError(
+                f"Output directory already exists: {output_dir}. Use --overwrite explicitly."
+            )
+        allowed_root = (PROJECT / "outputs").resolve()
+        if output_dir == allowed_root or allowed_root not in output_dir.parents:
+            raise ValueError("--overwrite is restricted to a child directory of outputs/")
+        shutil.rmtree(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     data = normalize_binary(pd.read_csv(input_path))
     missing_features = sorted(set(FEATURES).difference(data.columns))

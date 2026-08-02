@@ -6,3 +6,4 @@ matplotlib==3.10.8
 joblib
 pyyaml
 pytest
+statsmodels

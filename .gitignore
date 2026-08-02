@@ -1,8 +1,10 @@
 .env
 *.env
 !config/database.example.env
-data/
-outputs/
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/.gitkeep
 results/
 *.joblib
 *.pkl

@@ -11,10 +11,10 @@ import pandas as pd
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-MODEL_DIR = PROJECT / "modeling" / "v1.0_locked_primary"
-DCA_DIR = MODEL_DIR / "dca_raw_probability_audit_v1.0"
-DATA_PATH = PROJECT / "data" / "primary_cohort_model_dataset_v1.0.csv"
-OUTPUT_DIR = MODEL_DIR / "dca_relative_strategy_audit_v1.0"
+MODEL_DIR = PROJECT / "outputs" / "primary_model"
+DCA_DIR = PROJECT / "outputs" / "dca_raw_probability"
+DATA_PATH = PROJECT / "data" / "primary_model_dataset.csv"
+OUTPUT_DIR = PROJECT / "outputs" / "dca_relative_strategy"
 THRESHOLDS = np.array([0.01, 0.02, 0.03, 0.05, 0.075, 0.10, 0.15])
 BOOTSTRAP_RUNS = 1000
 BOOTSTRAP_SEED = 20260731

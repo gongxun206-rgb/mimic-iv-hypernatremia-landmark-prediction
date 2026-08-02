@@ -1,0 +1,9 @@
+node_order,node,n_stays,recorded_events,no_followup_sodium
+1,Original candidate ICU stays,94458,,
+2,Adult ICU stays,65366,,
+3,First ICU stay per patient,51562,,
+4,Alive and hospitalized at T0,36514,,
+5,Primary risk set after pre-T0 eligibility,36324,823,1411
+6,Final binary modeling cohort with post-T0 sodium,34913,823,0
+7,Development cohort 2008-2016,23667,460,0
+8,Temporal validation cohort 2017-2022,11246,363,0

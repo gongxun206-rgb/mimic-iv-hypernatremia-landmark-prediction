@@ -1,0 +1,18 @@
+{
+  "primary": {
+    "overall_n": 34913,
+    "overall_events": 823,
+    "development_n": 23667,
+    "development_events": 460,
+    "temporal_validation_n": 11246,
+    "temporal_validation_events": 363
+  },
+  "high_certainty": {
+    "overall_n": 20815,
+    "overall_events": 599,
+    "development_n": 15197,
+    "development_events": 333,
+    "temporal_validation_n": 5618,
+    "temporal_validation_events": 266
+  }
+}

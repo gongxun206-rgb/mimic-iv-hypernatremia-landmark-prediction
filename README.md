@@ -1,42 +1,144 @@
 # MIMIC-IV Hypernatremia Landmark Prediction
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21754482.svg)](https://doi.org/10.5281/zenodo.21754482)
+[![synthetic-ci](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction/actions/workflows/ci.yml/badge.svg)](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction/actions/workflows/ci.yml)
 
-Reproducible SQL and Python code for development and temporal validation of a 24-h landmark prediction model for **recorded moderate-to-severe hypernatremia** in MIMIC-IV v3.1.
+Data-free SQL, model-development code, frozen LASSO parameters, and synthetic tests for a MIMIC-IV v3.1 landmark prediction study. This is research software, not a clinical decision-support tool.
 
-## Scope
+## Locked study contract
 
-T0 is 24 h after ICU admission. The primary model uses 27 predictors available before T0 and estimates the risk of a first recorded serum sodium value >=151 mmol/L in `[T0, min(ICU admission + 7 days, hospital discharge, death))`. ICU discharge does not end follow-up. The development period was 2008-2016 and temporal validation period was 2017-2022. This is research code, not a clinical decision-support tool.
+- T0: 24 h after ICU admission.
+- Primary cohort: at least one pre-T0 sodium measurement and all observed pre-T0 values 135-145 mmol/L.
+- High-certainty cohort: at least two pre-T0 sodium measurements and all observed pre-T0 values 135-145 mmol/L.
+- Outcome: first recorded serum sodium >=151 mmol/L in `[T0, min(ICU admission + 7 days, hospital discharge, death))`.
+- ICU discharge does not end follow-up. No post-T0 sodium measurement is not encoded as a non-event.
+- Development: 2008-2016. Temporal validation: 2017-2022.
+- Core model: 27 pre-T0 variables. Prespecified extension: five additional sodium trajectory/monitoring variables.
 
-## Data access and restrictions
+## Data restrictions
 
-This repository contains no MIMIC-IV data, patient-level extracts, predictions, identifiers, timestamps, database credentials, or serialized fitted model objects. Users must obtain credentialed MIMIC-IV access through PhysioNet and comply with the applicable data-use agreement. The authors cannot redistribute patient-level MIMIC-IV data.
+No MIMIC-IV data, real identifiers, patient-level predictions, database credentials, or serialized fitted models are included. Obtain credentialed access through PhysioNet and comply with its data-use agreement. Keep all generated files in the ignored `data/` and `outputs/` directories.
+
+## Environment
+
+### Original locked analysis environment
+
+The locked outputs were generated with NumPy 2.3.5, pandas 3.0.1, and scikit-learn 1.8.0. The original Python interpreter version was not preserved in the locked run manifest.
+
+### Public-release verification environment
+
+GitHub Actions uses stable Python 3.12. The package pins NumPy 2.4.2, pandas 2.3.3, SciPy 1.17.1, matplotlib 3.10.8, and scikit-learn 1.8.0. A separate local verification was also performed under Python 3.14.3; that interpreter was not the documented original analysis interpreter.
+
+Create an environment on Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+python -m pytest -q
+```
+
+Alternatively:
+
+```powershell
+conda env create -f environment.yml
+conda activate mimic-iv-hypernatremia-landmark-prediction
+python -m pytest -q
+```
+
+## PostgreSQL configuration
+
+Copy the variable names from `config/database.example.env` into your local environment. Do not commit the populated file.
+
+```powershell
+$env:DB_HOST = "localhost"
+$env:DB_PORT = "5432"
+$env:DB_NAME = "mimiciv31"
+$env:DB_USER = "your_local_user"
+$env:PGPASSWORD = "your_local_password"
+```
+
+Run from the repository root so that `\copy` writes into the ignored `data/` directory:
+
+```powershell
+psql -h $env:DB_HOST -p $env:DB_PORT -U $env:DB_USER -d $env:DB_NAME -v ON_ERROR_STOP=1 -f sql/01_cohort_derivation.sql
+psql -h $env:DB_HOST -p $env:DB_PORT -U $env:DB_USER -d $env:DB_NAME -v ON_ERROR_STOP=1 -f sql/02_modeling_dataset_derivation.sql
+```
+
+The second script writes:
+
+- `data/primary_model_dataset.csv`
+- `data/high_certainty_model_dataset.csv`
+
+## Model development
+
+Primary analysis:
+
+```powershell
+python scripts/model_development.py --input data/primary_model_dataset.csv --output outputs/primary_model --analysis-role primary
+```
+
+High-certainty sensitivity analysis:
+
+```powershell
+python scripts/model_development.py --input data/high_certainty_model_dataset.csv --output outputs/high_certainty_model --analysis-role high_certainty
+```
+
+Existing output directories are rejected. Add `--overwrite` only when intentionally replacing a child directory of `outputs/`.
+
+Prespecified 32-variable models:
+
+```powershell
+python scripts/extended_model_analysis.py --input data/primary_model_dataset.csv --output outputs/extended_primary --analysis-role primary
+python scripts/extended_model_analysis.py --input data/high_certainty_model_dataset.csv --output outputs/extended_high_certainty --analysis-role high_certainty
+python scripts/extended_model_comparison.py
+```
+
+## Calibration, decision curves, and reporting
+
+The downstream scripts consume patient-level prediction files created locally by model development; these files remain ignored. Their defaults use `outputs/primary_model`:
+
+```powershell
+python scripts/calibration.py
+python scripts/decision_curve.py
+python scripts/decision_curve_relative_strategy.py
+python scripts/reporting.py --input data/primary_model_dataset.csv --output outputs/submission_materials
+```
+
+The reporting command verifies the locked counts before producing Figure 1, Table 1, and the missingness table. It does not retrain a model or connect to PostgreSQL.
+
+## Frozen probability reproduction
+
+The frozen 41-input LASSO probability can be reproduced without `.pkl` or `.joblib`:
+
+```powershell
+python model_specification/probability_reproduction_example.py
+python scripts/frozen_model_predict.py --input synthetic_example/synthetic_example.csv --output outputs/synthetic_probabilities.csv
+python scripts/export_model_specification.py --output outputs/model_specification_validation
+python scripts/validate_public_contract.py --output outputs/public_contract_validation.json
+```
+
+The example checks the complete intercept, feature order, preprocessing parameters, and coefficients against stored expected probabilities at absolute tolerance `1e-12`.
+
+## Tests
+
+```powershell
+python -m pytest -q
+```
+
+The tests use only entirely artificial rows and cover the 27 raw variables, 41 transformed inputs, frozen probability calculation, a small LASSO fit, cohort eligibility, GU-irrigant urine cleaning, and the rule that absent post-T0 sodium cannot be encoded as a non-event.
 
 ## Repository structure
 
 - `sql/`: PostgreSQL cohort, feature, and outcome derivation.
-- `scripts/`: model development, calibration, DCA, sensitivity, reporting, and model-specification export scripts.
-- `config/`: data-free study and model settings; use `database.example.env` as a template.
-- `model_specification/`: frozen coefficients, feature order, and preprocessing parameters.
-- `synthetic_example/`: entirely artificial schema/smoke-test data.
-- `docs/`: methods, reproduction, limitations, and manuscript-result crosswalk.
-
-## Environment
-
-The public-release verification environment was Python 3.14.3, NumPy 2.4.2, pandas 2.3.3, SciPy 1.17.1, matplotlib 3.10.8, and scikit-learn 1.8.0. The frozen model specification records scikit-learn 1.8.0. The complete original execution environment was not preserved in the locked run manifest; the supplied synthetic smoke test passed in a clean verification environment.
-
-## Reproduction order
-
-1. Configure a local PostgreSQL connection using `config/database.example.env`.
-2. Run `sql/01_cohort_derivation.sql` and `sql/02_modeling_dataset_derivation.sql` against MIMIC-IV v3.1 plus required derived concepts.
-3. Provide the resulting authorized local modeling data only outside this repository.
-4. Run the scripts in `scripts/` for development, temporal validation, calibration, DCA, secondary analysis, and reporting.
-5. Compare final implementation parameters against `model_specification/`.
-
-## Limitations
-
-Temporal validation is not independent external validation. The outcome is a recorded sodium event and depends on post-T0 sodium testing. Patients without post-T0 sodium testing were not encoded as non-events. This code must not be used to make unvalidated clinical treatment decisions.
+- `scripts/`: model development, calibration, DCA, reporting, and data-free helpers.
+- `config/`: locked predictor/settings manifests and data-free flow counts.
+- `model_specification/`: frozen coefficients, feature order, preprocessing, and probability example.
+- `synthetic_example/`: entirely artificial input rows.
+- `tests/`: database-free unit and end-to-end tests.
+- `docs/`: methods, reproduction notes, limitations, and manuscript crosswalks.
 
 ## Citation
 
-Software citation metadata are supplied in `CITATION.cff`. The fixed archived release is [Zenodo version 1.0.1](https://doi.org/10.5281/zenodo.21754482); the all-versions concept DOI is `10.5281/zenodo.21754481`. The public source repository is [gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction). Cite the MIMIC-IV data resource and its applicable access terms separately.
+The latest archived DOI shown above remains version 1.0.1 until the v1.0.2 reconciliation release is published and archived. `CITATION.cff` and this section will be updated only after Zenodo assigns the real v1.0.2 DOI. The all-versions concept DOI is `10.5281/zenodo.21754481`.
