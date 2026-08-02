@@ -21,7 +21,7 @@ This repository contains no MIMIC-IV data, patient-level extracts, predictions, 
 
 ## Environment
 
-The current release-preparation environment was Python 3.14.3, NumPy 2.4.2, pandas 2.3.3, SciPy 1.17.1, matplotlib 3.10.8, and scikit-learn 1.8.0. The frozen model specification records scikit-learn 1.8.0. The complete original execution environment was not preserved in the locked run manifest; clean-environment reproduction must be verified before public release.
+The public-release verification environment was Python 3.14.3, NumPy 2.4.2, pandas 2.3.3, SciPy 1.17.1, matplotlib 3.10.8, and scikit-learn 1.8.0. The frozen model specification records scikit-learn 1.8.0. The complete original execution environment was not preserved in the locked run manifest; the supplied synthetic smoke test passed in a clean verification environment.
 
 ## Reproduction order
 
@@ -37,4 +37,4 @@ Temporal validation is not independent external validation. The outcome is a rec
 
 ## Citation
 
-Software citation metadata are supplied in `CITATION.cff`. The public repository URL and Zenodo version DOI will be added after real publication. Cite the MIMIC-IV data resource and its applicable access terms separately.
+Software citation metadata are supplied in `CITATION.cff`. The public source repository is [gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction). The Zenodo version DOI will be added after archival. Cite the MIMIC-IV data resource and its applicable access terms separately.
