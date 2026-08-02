@@ -1,0 +1,1 @@
+"""Frozen model specification helpers."""
