@@ -9,7 +9,7 @@
 - No cohort membership, outcome label, fitted coefficient, performance result, or manuscript conclusion changed.
 
 ## Post-release documentation
-- Added the public Zenodo version DOI and concept DOI after archival of `v1.0.1`.
+- Added the v1.0.2 version DOI `10.5281/zenodo.21757839` and the unchanged concept DOI after archival.
 
 ## v1.0.1 - 2026-08-02
 - Documentation-only archival release; no cohort, model, code, or data changes.
