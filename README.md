@@ -1,5 +1,6 @@
 # MIMIC-IV Hypernatremia Landmark Prediction
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21758710.svg)](https://doi.org/10.5281/zenodo.21758710)
 [![synthetic-ci](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction/actions/workflows/ci.yml/badge.svg)](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction/actions/workflows/ci.yml)
 
 Data-free SQL, model-development code, frozen LASSO parameters, and synthetic tests for a MIMIC-IV v3.1 landmark prediction study. This is research software, not a clinical decision-support tool.
@@ -140,4 +141,4 @@ The tests use only entirely artificial rows and cover the 27 raw variables, 41 t
 
 ## Citation
 
-This release is archived through Zenodo. The version-specific DOI is recorded in the GitHub release and Zenodo record after publication. The all-versions concept DOI is [`10.5281/zenodo.21754481`](https://doi.org/10.5281/zenodo.21754481).
+Please cite the archived v1.0.3 software release as DOI [`10.5281/zenodo.21758710`](https://doi.org/10.5281/zenodo.21758710). The all-versions concept DOI is [`10.5281/zenodo.21754481`](https://doi.org/10.5281/zenodo.21754481).

@@ -4,11 +4,11 @@
 
 - Candidate directory: `mimic-iv-hypernatremia-landmark-prediction`
 - Git branch: `main`
-- Git commit: resolved by the annotated `v1.0.3` tag after release publication
+- Git commit: `337186564cdbb7cc48ff6c0f588aeff1acc9b2fe`
 - Tag: `v1.0.3`
-- GitHub release URL: recorded after release publication
-- Zenodo record URL: recorded after archive publication
-- Zenodo version DOI: recorded after archive publication
+- GitHub release URL: `https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction/releases/tag/v1.0.3`
+- Zenodo record URL: `https://zenodo.org/records/21758710`
+- Zenodo version DOI: `10.5281/zenodo.21758710`
 - Zenodo concept DOI: `10.5281/zenodo.21754481`
 - Release date: `2026-08-02`
 - Locked model intercept: `-3.707283461539647`
@@ -19,4 +19,4 @@
 - GitHub Actions verification target: Python `3.12`.
 - Additional local public-package verification: Python `3.14.3`, NumPy `2.4.2`, pandas `2.3.3`, SciPy `1.17.1`, matplotlib `3.10.8`, scikit-learn `1.8.0`.
 
-The annotated `v1.0.3` tag will remain fixed at its release commit. The version DOI is intentionally not guessed before Zenodo creates the archive; the concept DOI remains unchanged. Earlier `v1.0.1` and `v1.0.2` tags and releases remain preserved.
+The annotated `v1.0.3` tag remains fixed at the release commit above. The DOI metadata was added to `main` after Zenodo created the archive; the concept DOI remains unchanged. Earlier `v1.0.1` and `v1.0.2` tags and releases remain preserved.
