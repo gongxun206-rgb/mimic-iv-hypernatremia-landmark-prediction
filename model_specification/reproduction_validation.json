@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "analysis_type": "frozen_pipeline_parameter_export_and_independent_probability_reproduction",
+  "input_hashes": {
+    "locked_primary_data": "59AD75E0747D8FD6119AE679A9E171DE3FB2FDA37E6D485C59574D6752B74348",
+    "feature_manifest": "38B634DEE2EEC4E76B4E779B1D5FB9B5EE5A57653B4C07FA8A145DE59EC403EA",
+    "run_config": "ED9F8157F1DB37DA52762A9DA1D375E1F598C887F23557FC95E51F09B9143278",
+    "frozen_lasso_pipeline": "FB2DE2394E0E3BC788249D4BA5AB319CFC1497C86F9C6B94F3507F6E40284A3E"
+  },
+  "model_specification": {
+    "model_type": "L1-penalized logistic regression",
+    "final_C": 0.3,
+    "solver": "saga",
+    "l1_ratio": 1.0,
+    "sklearn_penalty_attribute": "deprecated",
+    "intercept": -3.707283461539647,
+    "development_n": 23667,
+    "development_events": 460,
+    "original_variable_count": 27,
+    "transformed_feature_count": 41,
+    "nonzero_coefficient_count_abs_gt_1e_10": 32,
+    "random_seed": 20260729,
+    "scikit_learn_version": "1.8.0"
+  },
+  "qc": {
+    "feature_order_exact_match": true,
+    "manual_matrix_max_abs_difference": 0.0,
+    "development_random_sample_n": 100,
+    "temporal_validation_random_sample_n": 100,
+    "random_sample_max_abs_probability_difference": 0.0,
+    "random_sample_mean_abs_probability_difference": 0.0,
+    "random_sample_requirement_max_abs_lt_1e_10": true,
+    "age_missing_indicator_generated": false,
+    "sodium_last_missing_indicator_generated": false
+  },
+  "reproduction_examples": [
+    {
+      "example_type": "no_missing",
+      "stay_id": 30000153,
+      "temporal_split": "development_2008_2016",
+      "numeric_missing_count": 0,
+      "absolute_difference": 0.0
+    },
+    {
+      "example_type": "multiple_missing",
+      "stay_id": 30069861,
+      "temporal_split": "development_2008_2016",
+      "numeric_missing_count": 7,
+      "absolute_difference": 0.0
+    },
+    {
+      "example_type": "high_risk",
+      "stay_id": 31186394,
+      "temporal_split": "development_2008_2016",
+      "numeric_missing_count": 0,
+      "absolute_difference": 0.0
+    }
+  ],
+  "prohibited_actions": {
+    "pipeline_refit": false,
+    "imputer_refit": false,
+    "scaler_refit": false,
+    "encoder_refit": false,
+    "lasso_refit": false,
+    "coefficient_change": false,
+    "feature_change": false,
+    "cohort_change": false,
+    "recalibration": false,
+    "xgboost": false,
+    "threshold_selection": false
+  },
+  "output_hashes": {
+    "Table_S3_final_lasso_model_specification_v1.0.csv": "B6D6B16000DE6E0D72850EB67C09508379784313068F10285B87238B8A6046BE",
+    "Table_S3_preprocessing_parameters_v1.0.csv": "9B23E8607E63923E8AFAF1712D0BA7381979C7235E70EA641F718ADD01E6D068",
+    "lasso_feature_mapping_v1.0.csv": "FD1ADAB0D03FFBBA864116B9B0B4E2BA3E335AFFCAA126281F2AF7427195E188",
+    "lasso_reproduction_examples_v1.0.csv": "2BF4BCEB5BCE2A20C806497FCE49181C81B6105CA1D2218FBDC84A6886931FA5"
+  }
+}

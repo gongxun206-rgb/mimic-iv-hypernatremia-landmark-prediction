@@ -1,0 +1,9 @@
+mimic_iv_version: "3.1"
+t0: "ICU admission + 24 hours"
+outcome_interval: "[T0, min(ICU admission + 7 days, hospital discharge, death))"
+event: "first recorded serum sodium >=151 mmol/L"
+icu_discharge_ends_followup: false
+no_post_t0_sodium_is_non_event: false
+primary_risk_set: "At least one pre-T0 sodium measurement; all measured pre-T0 sodium values 135-145 mmol/L"
+exclude_pre_t0_hypertonic_saline: ["3% sodium chloride", "23.4% sodium chloride"]
+exclude_pre_t0_mannitol: false

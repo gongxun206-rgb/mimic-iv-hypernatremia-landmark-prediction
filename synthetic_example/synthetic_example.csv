@@ -1,0 +1,4 @@
+age,sodium_last,creatinine_last,bun_last,chloride_last,potassium_last,bicarbonate_last,glucose_last,heart_rate_last,mbp_last,resp_rate_last,spo2_last,temperature_last,uo_mlkghr_6hr_clean,uo_mlkghr_12hr_clean,gender,invasive_vent_pre_t0,noninvasive_vent_pre_t0,hfnc_pre_t0,supplemental_oxygen_pre_t0,tracheostomy_pre_t0,ventilation_no_record_pre_t0,loop_diuretic_pre_t0,vasoactive_pre_t0,rrt_pre_t0,iv_isotonic_crystalloid_pre_t0,dextrose_or_hypotonic_fluid_pre_t0,temporal_split,outcome_na_ge_151
+65,139,0.9,18,106,4.1,24,115,82,77,18,98,37.0,0.8,0.8,M,0,0,0,1,0,0,0,0,0,1,0,development,0
+72,143,1.8,41,109,4.5,21,175,104,68,24,94,38.1,0.3,0.4,F,1,0,0,1,0,0,1,1,0,1,0,development,1
+58,138,0.7,13,104,3.9,26,101,76,83,16,99,36.7,1.0,1.1,F,0,0,0,0,0,1,0,0,0,1,1,temporal_validation,0

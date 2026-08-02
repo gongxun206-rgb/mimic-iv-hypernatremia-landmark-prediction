@@ -1,0 +1,10 @@
+model: l1_penalized_logistic_regression
+solver: saga
+l1_ratio: 1.0
+final_C: 0.3
+C_grid: [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0]
+outer_folds: 5
+inner_folds: 5
+random_seed: 20260729
+class_weight: null
+bootstrap_runs: 1000

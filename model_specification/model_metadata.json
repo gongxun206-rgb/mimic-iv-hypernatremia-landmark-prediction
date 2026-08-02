@@ -1,0 +1,32 @@
+{
+  "analysis_role": "locked_primary_protocol_amendment_v1.0",
+  "protocol_amendment_version": "v1.0_2026-07-30",
+  "development_split": "2008-2016",
+  "temporal_test_split": "2017-2022",
+  "development_n": 23667,
+  "development_events": 460,
+  "temporal_test_n": 11246,
+  "temporal_test_events": 363,
+  "outer_folds": 5,
+  "inner_folds_lasso": 5,
+  "random_state": 20260729,
+  "lasso_C_grid": [
+    0.001,
+    0.003,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0,
+    3.0
+  ],
+  "lasso_final_C": 0.3,
+  "class_weight": null,
+  "model_type": "L1-penalized logistic regression",
+  "solver": "saga",
+  "l1_ratio": 1.0,
+  "intercept": -3.707283461539647,
+  "transformed_feature_count": 41,
+  "nonzero_coefficient_count": 32,
+  "scikit_learn_version": "1.8.0"
+}

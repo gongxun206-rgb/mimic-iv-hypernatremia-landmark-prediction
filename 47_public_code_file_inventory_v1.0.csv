@@ -1,0 +1,47 @@
+relative_path,file_type,purpose,source_project_file,contains_patient_level_data,contains_credentials,contains_local_paths,third_party_code,license_status,tested,publication_decision,notes
+sql/01_cohort_derivation.sql,sql,Locked v1.0 cohort flow logic,sql/20_submission_cohort_flow_v1.0.sql,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+sql/02_modeling_dataset_derivation.sql,sql,Locked feature and outcome derivation logic,sql/13_建模数据集提取与质量核查.sql,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/model_development.py,py,Analysis pipeline source code,tools/20_train_primary_logistic_lasso.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/extended_model_analysis.py,py,Analysis pipeline source code,tools/29_train_sodium_process_extended_models.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/extended_model_comparison.py,py,Analysis pipeline source code,tools/30_compare_core_vs_extended.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/calibration.py,py,Analysis pipeline source code,tools/32_calibration_closure_audit.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/decision_curve.py,py,Analysis pipeline source code,tools/33_dca_raw_probability_audit.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/decision_curve_relative_strategy.py,py,Analysis pipeline source code,tools/34_dca_relative_strategy_audit.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/reporting.py,py,Analysis pipeline source code,tools/35_generate_submission_materials_v1_0.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+scripts/export_model_specification.py,py,Analysis pipeline source code,tools/36_export_locked_lasso_specification_v1_0.py,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+model_specification/final_coefficients.csv,csv,Frozen non-patient-level model specification,paper_submission_materials/v1.0/lasso_specification_v1.0/Table_S3_final_lasso_model_specification_v1.0.csv,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+model_specification/preprocessing_parameters.csv,csv,Frozen non-patient-level model specification,paper_submission_materials/v1.0/lasso_specification_v1.0/Table_S3_preprocessing_parameters_v1.0.csv,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+model_specification/final_feature_order.csv,csv,Frozen non-patient-level model specification,paper_submission_materials/v1.0/lasso_specification_v1.0/lasso_feature_mapping_v1.0.csv,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+model_specification/reproduction_validation.json,json,Frozen non-patient-level model specification,paper_submission_materials/v1.0/lasso_specification_v1.0/lasso_reproduction_validation_v1.0.json,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING,PUBLISH,Selected data-free source file.
+model_specification/model_metadata.json,json,Frozen model metadata without serialized model object,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+config/predictors.yaml,yaml,Locked predictor manifest,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+config/analysis_windows.yaml,yaml,Locked study windows and cohort boundaries,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+config/model_settings.yaml,yaml,Locked model settings,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+config/database.example.env,env,Database configuration template without credentials,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Placeholder values only; no production connection values.
+synthetic_example/synthetic_example.csv,csv,From-scratch synthetic input only,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,All values are artificial and do not correspond to any MIMIC-IV patient.
+synthetic_example/README.md,md,Synthetic data notice,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+synthetic_example/synthetic_input_schema.csv,csv,Synthetic input schema,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+README.md,md,Repository overview and use boundaries,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+CODE_AVAILABILITY.md,md,Code availability status,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+DATA_USE_NOTICE.md,md,MIMIC-IV data-use boundary,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+THIRD_PARTY_NOTICES.md,md,Third-party provenance boundary,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+CONTRIBUTING.md,md,Contribution boundary,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+CHANGELOG.md,md,Release changelog,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+RELEASE_NOTES_v1.0.0.md,md,Draft GitHub release notes,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+LICENSE_SELECTION_REQUIRED.md,md,License confirmation record,generated for Task 47,NO,NO,NO,NO,MIT,PASS,PUBLISH,Author confirmed MIT License on 2026-08-02.
+CITATION.cff,cff,Citation metadata template pending author identities and URL,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING_AUTHOR_CONFIRMATION,PUBLISH,Generated data-free public-release file.
+requirements.txt,txt,Current release-preparation Python dependencies,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING_CLEAN_ENVIRONMENT,PUBLISH,Generated data-free public-release file.
+environment.yml,yml,Current release-preparation Conda environment,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING_CLEAN_ENVIRONMENT,PUBLISH,Generated data-free public-release file.
+.gitignore,text,Prevent restricted data and local artifacts entering Git,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+tests/test_synthetic_smoke.py,py,Synthetic smoke test without patient data,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+.github/workflows/ci.yml,yml,Data-free continuous integration,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING_GITHUB,PUBLISH,Generated data-free public-release file.
+docs/cohort_logic.md,md,Cohort documentation,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/outcome_logic.md,md,Outcome documentation,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/preprocessing.md,md,Preprocessing documentation,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/model_specification.md,md,Model documentation,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/reproduction_instructions.md,md,Reproduction boundary,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/expected_outputs.md,md,Expected output boundary,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/known_limitations.md,md,Known limitations,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+docs/manuscript_result_crosswalk.md,md,Manuscript provenance crosswalk,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PASS,PUBLISH,Generated data-free public-release file.
+CODE_VERSION_MANIFEST.md,md,Release version and provenance manifest,generated for Task 47,NO,NO,NO,NO,AUTHOR_CONFIRMATION_REQUIRED,PENDING_AUTHOR_CONFIRMATION,PUBLISH,Pending real commit tag release URLs DOIs license and final environment confirmation.
+LICENSE,text,MIT License text,generated for Task 47,NO,NO,NO,NO,MIT,PASS,PUBLISH,Author confirmed MIT License on 2026-08-02.

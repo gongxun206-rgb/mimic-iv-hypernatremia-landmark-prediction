@@ -1,0 +1,28 @@
+component_type,original_variable,transformed_feature,development_imputation_median,scaler_mean,scaler_scale,missing_indicator_generated,missing_indicator_transformed_feature,missing_indicator_scaler_mean,missing_indicator_scaler_scale,missing_indicator_coefficient,imputation_or_encoding_rule
+numeric,age,numeric__age,67.0,65.53475303164744,16.53746451314127,False,,,,,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,sodium_last,numeric__sodium_last,139.0,139.0972239827608,2.506064707208072,False,,,,,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,creatinine_last,numeric__creatinine_last,0.9,1.2377572146871172,1.2353160880384466,True,numeric__missingindicator_creatinine_last,0.0005915409642117716,0.02431442048454848,0.0,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,bun_last,numeric__bun_last,17.0,22.398614104026702,17.246222281360534,True,numeric__missingindicator_bun_last,0.0009295643723327841,0.030474584204062134,-0.009392015916319017,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,chloride_last,numeric__chloride_last,106.0,105.50602104195715,4.298540857165277,True,numeric__missingindicator_chloride_last,0.00012675877804537965,0.011258006495715308,0.04102746822882901,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,potassium_last,numeric__potassium_last,4.1,4.1332699539443105,0.529661985928435,True,numeric__missingindicator_potassium_last,0.0010140702243630372,0.03182831893052314,-0.11875741198749193,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,bicarbonate_last,numeric__bicarbonate_last,24.0,23.89715637807918,3.923281257733172,True,numeric__missingindicator_bicarbonate_last,0.0008028055942874044,0.028322448648822465,0.059565419555850534,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,glucose_last,numeric__glucose_last,120.0,128.71420120843368,44.182134957862985,True,numeric__missingindicator_glucose_last,0.006295685976253855,0.07909519779570853,-0.13435930371834057,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,heart_rate_last,numeric__heart_rate_last,82.0,83.31884057971014,16.970435805431425,True,numeric__missingindicator_heart_rate_last,0.002070393374741201,0.04545444803333364,0.05778366828317153,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,mbp_last,numeric__mbp_last,76.0,77.99163392064901,14.84400292405277,True,numeric__missingindicator_mbp_last,0.0021971521527865807,0.04682226687382922,0.0,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,resp_rate_last,numeric__resp_rate_last,19.0,19.375544006422444,5.302788098768277,True,numeric__missingindicator_resp_rate_last,0.0026619343389529724,0.05152522144084463,0.0,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,spo2_last,numeric__spo2_last,97.0,96.5091900114083,2.833552054662704,True,numeric__missingindicator_spo2_last,0.002239405078801707,0.04726933618842922,0.0,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,temperature_last,numeric__temperature_last,36.89,36.9305661892086,0.571566539579942,True,numeric__missingindicator_temperature_last,0.044196560611822366,0.2055315660474271,0.0,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,uo_mlkghr_6hr_clean,numeric__uo_mlkghr_6hr_clean,0.7785,0.9822301390121265,0.7576859474683382,True,numeric__missingindicator_uo_mlkghr_6hr_clean,0.09443528964380783,0.29243335260140546,-0.04164583604261873,"SimpleImputer(strategy=median, add_indicator=True)"
+numeric,uo_mlkghr_12hr_clean,numeric__uo_mlkghr_12hr_clean,0.79645,0.9576658237207927,0.6727131055249301,True,numeric__missingindicator_uo_mlkghr_12hr_clean,0.05209785777665103,0.2222243708321274,0.049496417480087034,"SimpleImputer(strategy=median, add_indicator=True)"
+categorical,gender,categorical__gender_F | categorical__gender_M,,,,False,,,,,"SimpleImputer(most_frequent=M); OneHotEncoder(drop=None, categories=['F', 'M'])"
+binary,invasive_vent_pre_t0,binary__invasive_vent_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,noninvasive_vent_pre_t0,binary__noninvasive_vent_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,hfnc_pre_t0,binary__hfnc_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,supplemental_oxygen_pre_t0,binary__supplemental_oxygen_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=1.0); normalized 0/1; not standardized
+binary,tracheostomy_pre_t0,binary__tracheostomy_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,ventilation_no_record_pre_t0,binary__ventilation_no_record_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,loop_diuretic_pre_t0,binary__loop_diuretic_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,vasoactive_pre_t0,binary__vasoactive_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,rrt_pre_t0,binary__rrt_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized
+binary,iv_isotonic_crystalloid_pre_t0,binary__iv_isotonic_crystalloid_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=1.0); normalized 0/1; not standardized
+binary,dextrose_or_hypotonic_fluid_pre_t0,binary__dextrose_or_hypotonic_fluid_pre_t0,,,,False,,,,,SimpleImputer(most_frequent=0.0); normalized 0/1; not standardized

@@ -1,0 +1,29 @@
+# Locked 27 raw predictors in model-manifest order
+core_predictors:
+  - age
+  - sodium_last
+  - creatinine_last
+  - bun_last
+  - chloride_last
+  - potassium_last
+  - bicarbonate_last
+  - glucose_last
+  - heart_rate_last
+  - mbp_last
+  - resp_rate_last
+  - spo2_last
+  - temperature_last
+  - uo_mlkghr_6hr_clean
+  - uo_mlkghr_12hr_clean
+  - gender
+  - invasive_vent_pre_t0
+  - noninvasive_vent_pre_t0
+  - hfnc_pre_t0
+  - supplemental_oxygen_pre_t0
+  - tracheostomy_pre_t0
+  - ventilation_no_record_pre_t0
+  - loop_diuretic_pre_t0
+  - vasoactive_pre_t0
+  - rrt_pre_t0
+  - iv_isotonic_crystalloid_pre_t0
+  - dextrose_or_hypotonic_fluid_pre_t0

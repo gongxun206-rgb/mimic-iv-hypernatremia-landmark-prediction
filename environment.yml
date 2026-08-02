@@ -1,0 +1,14 @@
+name: mimic-iv-hypernatremia-landmark-prediction
+channels: [conda-forge]
+dependencies:
+  - python=3.14
+  - numpy=2.4.2
+  - pandas=2.3.3
+  - scikit-learn=1.8.0
+  - scipy=1.17.1
+  - matplotlib=3.10.8
+  - pyyaml
+  - pytest
+  - pip
+  - pip:
+      - joblib

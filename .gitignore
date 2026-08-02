@@ -1,0 +1,17 @@
+.env
+*.env
+!config/database.example.env
+data/
+outputs/
+results/
+*.joblib
+*.pkl
+*.pickle
+*.parquet
+*.feather
+*.xlsx
+*.xls
+*.log
+__pycache__/
+.pytest_cache/
+.venv/
