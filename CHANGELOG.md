@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.3 - 2026-08-02
+
+CI and release-metadata patch only. This release uses supported GitHub Actions v6 workflow actions with read-only repository permissions, pip caching, and Python 3.12 verification. It updates the release snapshot to avoid carrying a prior version's DOI before Zenodo creates the v1.0.3 archive. It does not change the study cohort, outcome, predictors, model logic, frozen coefficients, performance results, figures, or clinical conclusions.
+
 ## v1.0.2 - 2026-08-02
 - Reconciled primary and high-certainty cohort naming with the locked protocol.
 - Exported the audited cleaned 6-h and 12-h urine output rate fields from SQL.
