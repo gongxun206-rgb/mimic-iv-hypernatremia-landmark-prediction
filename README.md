@@ -1,5 +1,7 @@
 # MIMIC-IV Hypernatremia Landmark Prediction
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21754482.svg)](https://doi.org/10.5281/zenodo.21754482)
+
 Reproducible SQL and Python code for development and temporal validation of a 24-h landmark prediction model for **recorded moderate-to-severe hypernatremia** in MIMIC-IV v3.1.
 
 ## Scope
@@ -37,4 +39,4 @@ Temporal validation is not independent external validation. The outcome is a rec
 
 ## Citation
 
-Software citation metadata are supplied in `CITATION.cff`. The public source repository is [gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction). The Zenodo version DOI will be added after archival. Cite the MIMIC-IV data resource and its applicable access terms separately.
+Software citation metadata are supplied in `CITATION.cff`. The fixed archived release is [Zenodo version 1.0.1](https://doi.org/10.5281/zenodo.21754482); the all-versions concept DOI is `10.5281/zenodo.21754481`. The public source repository is [gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction](https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction). Cite the MIMIC-IV data resource and its applicable access terms separately.

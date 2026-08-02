@@ -6,6 +6,7 @@ date-released: 2026-08-02
 abstract: "Data-free reproducibility code for a MIMIC-IV v3.1 landmark prediction study."
 license: MIT
 repository-code: "https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction"
+doi: "10.5281/zenodo.21754482"
 authors:
   - family-names: Gong
     given-names: Xun
