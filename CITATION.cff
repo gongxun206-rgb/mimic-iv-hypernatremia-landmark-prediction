@@ -1,12 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 title: "Code for early prediction of recorded moderate-to-severe hypernatremia after a 24-h ICU landmark"
-version: 1.0.1
+version: 1.0.2
 date-released: 2026-08-02
 abstract: "Data-free reproducibility code for a MIMIC-IV v3.1 landmark prediction study."
 license: MIT
 repository-code: "https://github.com/gongxun206-rgb/mimic-iv-hypernatremia-landmark-prediction"
-doi: "10.5281/zenodo.21754482"
 authors:
   - family-names: Gong
     given-names: Xun

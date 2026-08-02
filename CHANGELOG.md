@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.2 - pending
+## v1.0.2 - 2026-08-02
 - Reconciled primary and high-certainty cohort naming with the locked protocol.
 - Exported the audited cleaned 6-h and 12-h urine output rate fields from SQL.
 - Aligned SQL outputs, model defaults, reporting paths, and README commands.
